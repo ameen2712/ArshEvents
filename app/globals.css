@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%; /* White */
+    --foreground: 45 90% 55%; /* Gold */
+
+    --muted: 0 0% 96.1%; /* Light Gray for muted backgrounds */
+    --muted-foreground: 45 80% 58%; /* Slightly lighter Gold for muted text */
+
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 45 90% 55%; /* Gold */
+
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 45 90% 55%; /* Gold */
+
+    --border: 45 80% 35%; /* Darker Gold Border */
+    --input: hsl(var(--border)); 
+    --input-background: hsl(0 0% 98%); /* Slightly off-white for input background */
+
+
+    --primary: 45 90% 55%; /* Bright Gold */
+    --primary-foreground: 240 10% 3.9%; /* Near Black for text on gold */
+
+    --secondary: 45 80% 45%; /* Darker Gold */
+    --secondary-foreground: 0 0% 98%; /* Very Light Gray/Off-White for text on darker gold */
+
+    --accent: 45 90% 65%; /* Lighter, vibrant Gold for accents */
+    --accent-foreground: 240 10% 3.9%; /* Near Black */
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --ring: 45 90% 60%; /* Gold for focus rings */
+
+    --radius: 0.5rem;
+
+    --chart-1: 45 90% 55%; /* Bright Gold */
+    --chart-2: 45 80% 65%; /* Lighter Gold */
+    --chart-3: 45 90% 45%; /* Darker Gold */
+    --chart-4: 45 70% 70%; /* Soft Gold */
+    --chart-5: 0 0% 80%;   /* Light Gray */
+    
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 45 90% 55%;
+    --sidebar-primary: 45 90% 55%;
+    --sidebar-primary-foreground: 240 10% 3.9%;
+    --sidebar-accent: 0 0% 94%;
+    --sidebar-accent-foreground: 45 80% 58%;
+    --sidebar-border: 45 80% 35%;
+    --sidebar-ring: 45 90% 60%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%; /* Near Black */
+    --foreground: 45 90% 55%; /* Gold */
+
+    --muted: 240 4% 12%; /* Dark Gray, slightly lighter than background */
+    --muted-foreground: 45 80% 58%; /* Slightly lighter Gold */
+
+    --popover: 240 6% 10%; /* Dark Gray for popovers */
+    --popover-foreground: 45 90% 55%; /* Gold */
+
+    --card: 240 6% 10%; /* Dark Gray for cards */
+    --card-foreground: 45 90% 55%; /* Gold */
+
+    --border: 45 80% 35%; /* Darker Gold Border for dark mode */
+    --input: hsl(var(--border)); /* Gold border for inputs in dark mode */
+    --input-background: hsl(240, 4%, 15%); /* Slightly lighter dark gray for input background */
+
+
+    --primary: 45 90% 55%; /* Bright Gold */
+    --primary-foreground: 240 5% 95%; /* Very Light Gray/Off-White for text on gold */
+
+    --secondary: 45 80% 45%; /* Darker Gold */
+    --secondary-foreground: 0 0% 98%; /* Very Light Gray/Off-White for text on darker gold */
+
+    --accent: 45 90% 65%; /* Lighter, vibrant Gold for accents */
+    --accent-foreground: 240 10% 3.9%; /* Near Black */
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+
+    --ring: 45 90% 60%; /* Gold for focus rings */
+
+    --chart-1: 45 90% 55%; /* Bright Gold */
+    --chart-2: 45 80% 65%; /* Lighter Gold */
+    --chart-3: 45 90% 45%; /* Darker Gold */
+    --chart-4: 45 70% 70%; /* Soft Gold */
+    --chart-5: 0 0% 70%;   /* Medium Gray */
+
+    --sidebar-background: 240 6% 10%;
+    --sidebar-foreground: 45 90% 55%;
+    --sidebar-primary: 45 90% 55%;
+    --sidebar-primary-foreground: 240 5% 95%;
+    --sidebar-accent: 240 4% 18%;
+    --sidebar-accent-foreground: 45 80% 58%;
+    --sidebar-border: 45 80% 35%;
+    --sidebar-ring: 45 90% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-poppins), sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight text-foreground;
+    font-family: var(--font-poppins), sans-serif; 
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-extrabold; /* Extra Bolder for H1 */
+  }
+  h2 {
+    @apply text-3xl md:text-4xl font-bold; /* Bolder for H2 */
+  }
+  h3 {
+    @apply text-2xl md:text-3xl font-semibold; /* Semibold for H3 */
+  }
+  
+  p, li, span:not([class*="lucide-"]), div:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not([class*="lucide-"]) {
+     font-family: var(--font-poppins), sans-serif;
+     @apply text-base font-normal leading-relaxed text-foreground tracking-normal; /* Poppins regular, normal tracking */
+  }
+}
+
+/* Custom gradient text */
+.text-gradient-gold-shine {
+  /* In light mode, this will be a blue gradient if primary/secondary are blue.
+     In dark mode, this will be a gold gradient if primary/secondary are gold.
+     This assumes primary and secondary colors are set appropriately for each theme.
+  */
+  @apply bg-gradient-to-r from-primary via-[hsl(var(--accent))] to-secondary bg-clip-text text-transparent;
+}
